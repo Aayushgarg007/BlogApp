@@ -1,0 +1,12 @@
+i.icon {
+	font-size: 2em;
+	/* em means double the size of parent */
+}
+
+.container.main {
+	margin-top: 7.0em;
+}
+
+#delete {
+	display: inline;
+}

@@ -1,0 +1,32 @@
+<%- include('partials/header') %>
+
+<div class="ui main text container segment">
+	<div class="ui huge header"><%= blog.title %></div>
+	<!-- segment class puts border around things -->
+	<div class="ui top attached">
+		<div class="item">
+			<img class="ui centered rounded image" src="<%= blog.image %>" alt="">
+			<div class="content">
+				<!-- .toDateString() is used to make the detailed date format into a simple date format -->
+				<!-- momentJS library can be used for any type of date format you want -->
+				<span><%= blog.created.toDateString() %></span>
+			</div>
+			
+			<!-- here if some user wants to write html in the content then if we use <%= %> then the tags in the text will not be treated as tags. But if we use <%- %> then the tags in text will be used as tags. <%- %> will evalute the code -->
+			<!-- we should not let user write html tags as user can write script tag and run javascript -->
+			<!-- <div class="description">
+				<p><%= blog.body%></p>
+			</div> -->
+			
+			<div class="description">
+				<p><%- blog.body%></p>
+			</div>
+			<a class="ui orange basic button" href="/blogs/<%= blog._id %>/edit">Edit</a>
+			<form id="delete" action="/blogs/<%= blog._id %>?_method=DELETE" method="POST">
+				<button class="ui red basic button">DELETE</button>
+			</form>
+		</div>
+	</div>
+</div>
+
+<%- include('partials/footer') %>
